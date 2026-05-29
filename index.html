@@ -1,331 +1,343 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
-
-<meta charset="utf-8">
-
+<meta charset="UTF-8">
 <meta
 name="viewport"
-content="
-width=device-width,
-initial-scale=1,
-viewport-fit=cover,
-maximum-scale=1,
-user-scalable=no">
+content="width=device-width,initial-scale=1,viewport-fit=cover"
+/>
 
-<meta
-name="theme-color"
-content="#070b14">
-
-<meta
-name="apple-mobile-web-app-capable"
-content="yes">
-
-<meta
-name="apple-mobile-web-app-status-bar-style"
-content="black-translucent">
-
-<meta
-name="apple-mobile-web-app-title"
-content="Journara">
+<meta name="theme-color" content="#0c1222">
 
 <title>Journara</title>
 
-<link
-rel="manifest"
-href="./manifest.webmanifest">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="stylesheet" href="./styles.css">
 
-<link
-rel="apple-touch-icon"
-href="./assets/icon-180.png">
-
-<link
-rel="stylesheet"
-href="./css/base.css">
-
-<link
-rel="stylesheet"
-href="./css/layout.css">
-
-<link
-rel="stylesheet"
-href="./css/components.css">
-
-<link
-rel="stylesheet"
-href="./css/animations.css">
-
-<link
-rel="stylesheet"
-href="./css/mobile.css">
-
-<link
-rel="stylesheet"
-href="./css/desktop.css">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Journara">
 
 </head>
 
 <body>
 
-<div class="ambient-bg"></div>
+<div id="app" class="app">
 
-<div class="app-shell">
+<div class="aurora aurora-a"></div>
+<div class="aurora aurora-b"></div>
+<div class="aurora aurora-c"></div>
 
-  <!-- DESKTOP SIDEBAR -->
+<header class="topbar glass">
 
-  <aside class="sidebar glass">
+<div class="brand">
 
-    <div class="sidebar-top">
+<div class="brand-dot"></div>
 
-      <div class="brand-wrap">
+<div>
+<p class="brand-sub">
+ژورنال شخصی
+</p>
 
-        <div class="brand-logo"></div>
-
-        <div>
-
-          <h1 class="brand-title">
-            Journara
-          </h1>
-
-          <p class="brand-sub">
-            Daily Journal
-          </p>
-
-        </div>
-
-      </div>
-
-      <button
-      class="new-entry-btn scale-press"
-      id="newEntryBtn">
-
-        ژورنال جدید
-
-      </button>
-
-    </div>
-
-    <div
-    class="journal-list"
-    id="journalList">
-
-    </div>
-
-  </aside>
-
-  <!-- MAIN -->
-
-  <main class="main-shell">
-
-    <!-- HEADER -->
-
-    <header class="topbar glass">
-
-      <div class="topbar-left">
-
-        <div class="today-label">
-          امروز
-        </div>
-
-      </div>
-
-      <div class="topbar-right">
-
-        <button
-        class="icon-btn"
-        id="themeToggleBtn">
-
-          🌙
-
-        </button>
-
-      </div>
-
-    </header>
-
-    <!-- HOME -->
-
-    <section
-    class="home-view active-view"
-    id="homeView">
-
-      <div class="hero-card glass fade-in">
-
-        <div class="hero-date">
-
-          <div
-          class="hero-weekday"
-          id="weekdayLabel">
-
-          </div>
-
-          <div
-          class="hero-day"
-          id="dayLabel">
-
-          </div>
-
-          <div
-          class="hero-month"
-          id="monthLabel">
-
-          </div>
-
-        </div>
-
-        <button
-        class="primary-btn scale-press"
-        id="openTodayBtn">
-
-          باز کردن ژورنال امروز
-
-        </button>
-
-      </div>
-
-      <!-- MOOD -->
-
-      <div class="mood-card glass">
-
-        <div class="mood-top">
-
-          <div>
-
-            <div class="section-title">
-              مود امروز
-            </div>
-
-            <div class="section-sub">
-              حالت احساسی امروز
-            </div>
-
-          </div>
-
-          <div
-          class="mood-emoji"
-          id="moodEmoji">
-
-            🙂
-          </div>
-
-        </div>
-
-        <input
-        type="range"
-        min="0"
-        max="6"
-        value="3"
-        id="moodSlider">
-
-        <div
-        class="mood-label"
-        id="moodLabel">
-
-          خوب و متعادل
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- READER -->
-
-    <section
-    class="reader-view"
-    id="readerView">
-
-      <article
-      class="reader-card glass"
-      id="readerCard">
-
-      </article>
-
-    </section>
-
-  </main>
+<h1>
+Journara
+</h1>
+</div>
 
 </div>
 
-<!-- EDITOR -->
+<div class="top-actions">
 
-<dialog
-class="editor-modal"
-id="editorModal">
+<button
+id="themeBtn"
+class="icon-btn"
+aria-label="theme">
+☼
+</button>
 
-<form
-method="dialog"
-class="editor-shell glass">
+</div>
 
-  <div class="editor-top">
+</header>
 
-    <div>
+<main id="pages">
 
-      <div class="section-title">
-        ژورنال جدید
-      </div>
+<section
+id="homePage"
+class="page active">
 
-      <div
-      class="section-sub"
-      id="editorDate">
+<div class="hero glass">
 
-      </div>
+<div
+id="heroDate"
+class="hero-date">
 
-    </div>
+<div id="heroWeekday">
+شنبه
+</div>
 
-    <button
-    class="icon-btn"
-    value="cancel">
+<div id="heroDay">
+24
+</div>
 
-      ✕
+<div id="heroMonth">
+خرداد
+</div>
 
-    </button>
+</div>
 
-  </div>
+<div class="hero-actions">
 
-  <div class="editor-body">
+<button
+id="todayJournalBtn"
+class="primary-btn">
+ژورنال امروز
+</button>
 
-    <input
-    type="text"
-    id="entryTitle"
-    class="text-input"
-    placeholder="عنوان">
+</div>
 
-    <textarea
-    id="entryBody"
-    class="text-area"
-    placeholder="امروز چی گذشت؟">
+</div>
 
-    </textarea>
+<div
+id="todayCard"
+class="today-card glass hidden">
+</div>
 
-    <input
-    type="file"
-    id="mediaInput"
-    multiple
-    accept="image/*,video/*">
+<div class="mood-card glass">
 
-    <div
-    class="media-grid"
-    id="mediaGrid">
+<div class="mood-head">
 
-    </div>
+<div>
+<h3>
+حال امروز
+</h3>
 
-  </div>
+<p>
+مود روزت را انتخاب کن
+</p>
+</div>
 
-  <button
-  type="button"
-  class="primary-btn"
-  id="saveEntryBtn">
+<div
+id="moodEmoji"
+class="mood-emoji">
+🙂
+</div>
 
-    ذخیره ژورنال
+</div>
 
-  </button>
+<input
+id="moodSlider"
+type="range"
+min="0"
+max="6"
+step="1"
+value="3">
 
-</form>
+<div
+id="moodLabel"
+class="mood-label">
+متعادل
+</div>
+
+</div>
+
+</section>
+
+<section
+id="listPage"
+class="page">
+
+<div class="section-head">
+
+<h2>
+همه ژورنال‌ها
+</h2>
+
+<button
+id="newEntryBtn"
+class="soft-btn">
++
+</button>
+
+</div>
+
+<div
+id="journalList"
+class="journal-list">
+</div>
+
+</section>
+
+<section
+id="settingsPage"
+class="page">
+
+<div class="settings-grid">
+
+<div class="card glass">
+
+<h3>
+ظاهر
+</h3>
+
+<select id="themeSelect">
+
+<option value="aurora">
+Aurora
+</option>
+
+<option value="midnight">
+Midnight
+</option>
+
+<option value="candy">
+Candy
+</option>
+
+</select>
+
+</div>
+
+<div class="card glass">
+
+<h3>
+پشتیبان گیری
+</h3>
+
+<button
+id="exportBtn"
+class="soft-btn">
+خروجی JSON
+</button>
+
+<input
+type="file"
+id="importInput">
+
+</div>
+
+<div class="card glass">
+
+<h3>
+نگهداری
+</h3>
+
+<button
+id="resetBtn"
+class="danger-btn">
+حذف همه داده‌ها
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section
+id="readerPage"
+class="page">
+
+<div class="reader-header">
+
+<button
+id="readerBackBtn"
+class="icon-btn">
+←
+</button>
+
+<button
+id="readerDeleteBtn"
+class="icon-btn">
+🗑
+</button>
+
+</div>
+
+<article
+id="readerContent"
+class="reader glass">
+</article>
+
+</section>
+
+</main>
+
+<nav class="tabbar glass">
+
+<button
+class="tab active"
+data-page="home">
+خانه
+</button>
+
+<button
+class="tab"
+data-page="list">
+ژورنال‌ها
+</button>
+
+<button
+class="tab"
+data-page="settings">
+تنظیمات
+</button>
+
+</nav>
+
+</div>
+
+<dialog id="editorModal">
+
+<div class="editor glass">
+
+<div class="editor-head">
+
+<h2 id="editorTitle">
+ژورنال
+</h2>
+
+<button
+id="closeEditorBtn"
+class="icon-btn">
+✕
+</button>
+
+</div>
+
+<input
+id="entryTitle"
+class="text-input"
+placeholder="عنوان">
+
+<textarea
+id="entryBody"
+class="text-area"
+placeholder="امروز چه گذشت؟">
+</textarea>
+
+<input
+type="file"
+id="mediaInput"
+multiple
+accept="image/*,video/*">
+
+<div
+id="mediaPreview"
+class="media-preview">
+</div>
+
+<button
+id="saveEntryBtn"
+class="primary-btn full">
+ذخیره
+</button>
+
+</div>
 
 </dialog>
 
-<script type="module" src="./js/app.js"></script>
+<script src="./app.js"></script>
 
 </body>
 </html>

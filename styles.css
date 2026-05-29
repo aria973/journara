@@ -1,13 +1,14 @@
 :root{
   --bg:#0b1220;
   --card:#121b2e;
-  --text:#e8eefc;
-  --muted:#93a4c7;
+  --text:#eaf0ff;
+  --muted:#8ea0c9;
   --accent:#7c5cff;
   --radius:18px;
 }
 
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:system-ui;
@@ -17,7 +18,7 @@ body{
 }
 
 /* APP */
-.app{
+#app{
   height:100vh;
   display:flex;
   flex-direction:column;
@@ -25,15 +26,12 @@ body{
 
 /* TOP */
 .topbar{
-  padding:14px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  padding:14px;
 }
 
-.brand{
-  font-weight:800;
-}
+.logo{font-weight:800}
 
 /* BUTTON */
 .btn{
@@ -48,32 +46,21 @@ body{
   color:white;
 }
 
-/* SCREEN */
+/* SCREENS */
 .screen{
-  display:none;
   flex:1;
+  display:none;
   overflow:auto;
   padding:14px;
 }
 
 .screen.active{display:block}
 
-/* HERO */
+/* CARD */
 .card{
   background:var(--card);
   padding:16px;
   border-radius:var(--radius);
-}
-
-.date{
-  font-size:18px;
-  margin-bottom:10px;
-}
-
-.mood{
-  display:flex;
-  gap:10px;
-  align-items:center;
 }
 
 /* LIST */
@@ -92,20 +79,10 @@ body{
   transition:.2s;
 }
 
-.item:hover{
-  transform:scale(1.01);
-}
+.item:hover{transform:scale(1.02)}
 
 /* READER */
-.back{
-  background:none;
-  border:0;
-  color:white;
-  font-size:22px;
-  margin-bottom:10px;
-}
-
-#reader{
+.reader{
   background:var(--card);
   padding:16px;
   border-radius:var(--radius);
@@ -126,7 +103,7 @@ body{
 .hidden{display:none}
 
 .modalBox{
-  width:90%;
+  width:92%;
   max-width:420px;
   background:var(--card);
   padding:16px;
@@ -137,10 +114,9 @@ body{
 }
 
 input,textarea{
-  width:100%;
+  border:0;
   padding:10px;
   border-radius:10px;
-  border:0;
   background:#0f172a;
   color:white;
 }

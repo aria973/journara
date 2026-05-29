@@ -1,0 +1,64 @@
+.fade-in{
+
+  animation:
+    fadeIn .7s cubic-bezier(.22,1,.36,1);
+
+}
+
+@keyframes fadeIn{
+
+  from{
+    opacity:0;
+    transform:
+      translateY(18px)
+      scale(.98);
+  }
+
+  to{
+    opacity:1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+.scale-press{
+
+  transition:
+    transform .2s cubic-bezier(.22,1,.36,1);
+
+}
+
+.scale-press:active{
+
+  transform:
+    scale(.96);
+
+}
+
+.float-ambient{
+
+  animation:
+    floatAmbient 12s ease-in-out infinite;
+
+}
+
+@keyframes floatAmbient{
+
+  0%{
+    transform:
+      translate3d(0,0,0);
+  }
+
+  50%{
+    transform:
+      translate3d(0,-18px,0);
+  }
+
+  100%{
+    transform:
+      translate3d(0,0,0);
+  }
+
+}

@@ -1,26 +1,38 @@
-const DB_NAME = "journara-db";
+const DB_NAME =
+"journara-db";
+
 const DB_VERSION = 1;
 
 let db;
 
 export async function initDB(){
 
-  return new Promise((resolve,reject)=>{
+  return new Promise(
+  (resolve,reject)=>{
 
     const request =
-      indexedDB.open(DB_NAME,DB_VERSION);
+    indexedDB.open(
+      DB_NAME,
+      DB_VERSION
+    );
 
-    request.onupgradeneeded = (e)=>{
+    request.onupgradeneeded =
+    (e)=>{
 
       db = e.target.result;
 
-      if(!db.objectStoreNames.contains("journals")){
+      if(
+        !db.objectStoreNames
+        .contains("journals")
+      ){
 
         const store =
-          db.createObjectStore(
-            "journals",
-            { keyPath:"id" }
-          );
+        db.createObjectStore(
+          "journals",
+          {
+            keyPath:"id"
+          }
+        );
 
         store.createIndex(
           "date",
@@ -49,22 +61,28 @@ export async function initDB(){
 
 }
 
-export async function saveJournal(data){
+export async function saveJournal(
+data
+){
 
-  return new Promise((resolve,reject)=>{
+  return new Promise(
+  (resolve,reject)=>{
 
     const tx =
-      db.transaction(
-        "journals",
-        "readwrite"
-      );
+    db.transaction(
+      "journals",
+      "readwrite"
+    );
 
-    tx.objectStore("journals")
-      .put(data);
+    tx.objectStore(
+      "journals"
+    ).put(data);
 
-    tx.oncomplete = ()=>resolve();
+    tx.oncomplete =
+    ()=>resolve();
 
-    tx.onerror = ()=>reject();
+    tx.onerror =
+    ()=>reject();
 
   });
 
@@ -72,23 +90,29 @@ export async function saveJournal(data){
 
 export async function getAllJournals(){
 
-  return new Promise((resolve,reject)=>{
+  return new Promise(
+  (resolve,reject)=>{
 
     const tx =
-      db.transaction(
-        "journals",
-        "readonly"
-      );
+    db.transaction(
+      "journals",
+      "readonly"
+    );
 
-    const req =
-      tx.objectStore("journals")
-      .getAll();
+    const request =
+    tx.objectStore(
+      "journals"
+    ).getAll();
 
-    req.onsuccess =
-      ()=>resolve(req.result);
+    request.onsuccess =
+    ()=>resolve(
+      request.result
+    );
 
-    req.onerror =
-      ()=>reject(req.error);
+    request.onerror =
+    ()=>reject(
+      request.error
+    );
 
   });
 

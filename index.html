@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="theme-color" content="#0b1220" />
 
   <title>Journara Pro</title>
 
@@ -12,44 +12,45 @@
 </head>
 
 <body>
-  <div class="app" id="app">
 
-    <!-- TOP BAR -->
-    <header class="topbar">
-      <div class="brand">Journara</div>
-      <button id="newBtn" class="btn primary">+ جدید</button>
-    </header>
+<div id="app">
 
-    <!-- HOME -->
-    <main class="screen active" id="homeScreen">
-      <section class="hero card">
-        <div class="date" id="todayDate"></div>
-        <div class="mood">
-          <span id="moodEmoji">🙂</span>
-          <input id="mood" type="range" min="0" max="6" value="3"/>
-        </div>
-      </section>
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="logo">Journara</div>
+    <button id="newEntryBtn" class="btn primary">+ یادداشت</button>
+  </header>
 
-      <section class="list" id="list"></section>
-    </main>
-
-    <!-- READER -->
-    <main class="screen" id="readerScreen">
-      <button class="back" id="backBtn">←</button>
-      <article id="reader"></article>
-    </main>
-
-    <!-- MODAL -->
-    <div class="modal hidden" id="modal">
-      <div class="modalBox">
-        <input id="title" placeholder="عنوان..." />
-        <textarea id="body" placeholder="بنویس..."></textarea>
-        <button id="saveBtn" class="btn primary">ذخیره</button>
+  <!-- HOME -->
+  <section id="home" class="screen active">
+    <div class="hero card">
+      <div id="today"></div>
+      <div class="mood">
+        <span id="moodEmoji">🙂</span>
+        <input id="moodSlider" type="range" min="0" max="6" value="3" />
       </div>
     </div>
 
+    <div id="list" class="list"></div>
+  </section>
+
+  <!-- READER -->
+  <section id="reader" class="screen">
+    <button id="backBtn">←</button>
+    <div id="readerContent" class="reader"></div>
+  </section>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden">
+    <div class="modalBox">
+      <input id="title" placeholder="عنوان..." />
+      <textarea id="body" placeholder="بنویس..."></textarea>
+      <button id="saveBtn" class="btn primary">ذخیره</button>
+    </div>
   </div>
 
-  <script src="./app.js"></script>
+</div>
+
+<script type="module" src="./app.js"></script>
 </body>
 </html>

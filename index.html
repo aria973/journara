@@ -1,339 +1,396 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-<meta charset="UTF-8">
-<meta
-name="viewport"
-content="width=device-width,initial-scale=1,viewport-fit=cover"
-/>
-
-<meta name="theme-color" content="#0c1222">
+<meta charset="utf-8">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <title>Journara</title>
+
+<meta name="theme-color" content="#0e1324">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="stylesheet" href="./styles.css">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Journara">
-
+<link rel="apple-touch-icon" href="./assets/icon-192.png">
 </head>
 
 <body>
 
-<div id="app" class="app">
+<div class="app-shell" id="appShell">
 
-<div class="aurora aurora-a"></div>
-<div class="aurora aurora-b"></div>
-<div class="aurora aurora-c"></div>
+  <!-- BACKGROUND -->
+  <div class="bg-layer">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
-<header class="topbar glass">
+  <!-- HEADER -->
+  <header class="topbar glass">
 
-<div class="brand">
+    <div class="brand-side">
+      <div class="brand-logo" id="brandLogo"></div>
+    </div>
 
-<div class="brand-dot"></div>
+    <div class="brand-center">
+      <span class="eyebrow">ژورنال شخصی</span>
+      <h1>Journara</h1>
+    </div>
 
-<div>
-<p class="brand-sub">
-ژورنال شخصی
-</p>
+    <div class="brand-actions">
+      <button
+        class="icon-btn"
+        id="themeToggleBtn"
+        aria-label="تغییر تم">
+        ☾
+      </button>
+    </div>
 
-<h1>
-Journara
-</h1>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-layout">
+
+    <!-- HOME -->
+    <section class="page active" id="page-home">
+
+      <div class="hero glass">
+
+        <div class="hero-date" id="heroDate">
+          <div class="weekday" id="weekdayLabel">
+            شنبه
+          </div>
+
+          <div class="day-number" id="dayNumber">
+            01
+          </div>
+
+          <div class="month-label" id="monthLabel">
+            فروردین
+          </div>
+        </div>
+
+        <button
+          class="primary-btn"
+          id="openTodayBtn">
+          ژورنال امروز
+        </button>
+
+      </div>
+
+      <!-- MOOD -->
+      <div class="card glass">
+
+        <div class="card-head">
+          <div>
+            <h3>مود امروز</h3>
+            <span>حس و حال خودت رو ثبت کن</span>
+          </div>
+
+          <div class="mood-emoji" id="moodEmoji">
+            🙂
+          </div>
+        </div>
+
+        <input
+          type="range"
+          min="0"
+          max="6"
+          value="3"
+          id="moodSlider">
+
+        <div
+          class="mood-label"
+          id="moodLabel">
+          خوب و متعادل
+        </div>
+
+      </div>
+
+      <!-- TODAY SUMMARY -->
+      <div
+        class="card glass hidden"
+        id="todaySummary">
+      </div>
+
+    </section>
+
+    <!-- LIST -->
+    <section class="page" id="page-list">
+
+      <div class="page-head">
+
+        <div>
+          <h2>همه ژورنال‌ها</h2>
+          <p>مرور نوشته‌ها و خاطرات</p>
+        </div>
+
+        <button
+          class="soft-btn"
+          id="newEntryBtn">
+          +
+        </button>
+
+      </div>
+
+      <div
+        class="journal-list"
+        id="journalList">
+      </div>
+
+    </section>
+
+    <!-- READER -->
+    <section class="page" id="page-reader">
+
+      <div class="reader-header glass">
+
+        <button
+          class="icon-btn"
+          id="readerBackBtn">
+          ←
+        </button>
+
+        <div
+          class="reader-meta"
+          id="readerMeta">
+        </div>
+
+        <button
+          class="icon-btn"
+          id="readerMenuBtn">
+          ⋯
+        </button>
+
+      </div>
+
+      <article
+        class="reader-card glass"
+        id="readerCard">
+      </article>
+
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="page" id="page-settings">
+
+      <div class="settings-grid">
+
+        <div class="setting-card glass">
+
+          <h3>ظاهر</h3>
+
+          <label class="field">
+            <span>تم برنامه</span>
+
+            <select id="themeSelect">
+              <option value="bubbles">حبابی</option>
+              <option value="aurora">اورورا</option>
+              <option value="midnight">نئونی</option>
+              <option value="minimal">مینیمال</option>
+            </select>
+          </label>
+
+        </div>
+
+        <div class="setting-card glass">
+
+          <h3>پشتیبان‌گیری</h3>
+
+          <button
+            class="soft-btn"
+            id="exportZipBtn">
+            خروجی ZIP
+          </button>
+
+          <label class="upload-btn">
+
+            بازیابی ZIP
+
+            <input
+              type="file"
+              id="importZipInput"
+              accept=".zip">
+
+          </label>
+
+          <button
+            class="soft-btn"
+            id="exportPdfBtn">
+            خروجی PDF
+          </button>
+
+        </div>
+
+        <div class="setting-card glass">
+
+          <h3>نگهداری</h3>
+
+          <button
+            class="danger-btn"
+            id="resetBtn">
+            حذف همه داده‌ها
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- BOTTOM NAV -->
+
+  <nav class="bottom-nav glass">
+
+    <button
+      class="nav-btn"
+      data-page="list">
+
+      <span>📚</span>
+      <small>آرشیو</small>
+
+    </button>
+
+    <button
+      class="nav-btn active"
+      data-page="home">
+
+      <span>🏠</span>
+      <small>خانه</small>
+
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="settings">
+
+      <span>⚙️</span>
+      <small>تنظیمات</small>
+
+    </button>
+
+  </nav>
+
 </div>
 
-</div>
-
-<div class="top-actions">
-
-<button
-id="themeBtn"
-class="icon-btn"
-aria-label="theme">
-☼
-</button>
-
-</div>
-
-</header>
-
-<main id="pages">
-
-<section
-id="homePage"
-class="page active">
-
-<div class="hero glass">
-
-<div
-id="heroDate"
-class="hero-date">
-
-<div id="heroWeekday">
-شنبه
-</div>
-
-<div id="heroDay">
-24
-</div>
-
-<div id="heroMonth">
-خرداد
-</div>
-
-</div>
-
-<div class="hero-actions">
-
-<button
-id="todayJournalBtn"
-class="primary-btn">
-ژورنال امروز
-</button>
-
-</div>
-
-</div>
-
-<div
-id="todayCard"
-class="today-card glass hidden">
-</div>
-
-<div class="mood-card glass">
-
-<div class="mood-head">
-
-<div>
-<h3>
-حال امروز
-</h3>
-
-<p>
-مود روزت را انتخاب کن
-</p>
-</div>
-
-<div
-id="moodEmoji"
-class="mood-emoji">
-🙂
-</div>
-
-</div>
-
-<input
-id="moodSlider"
-type="range"
-min="0"
-max="6"
-step="1"
-value="3">
-
-<div
-id="moodLabel"
-class="mood-label">
-متعادل
-</div>
-
-</div>
-
-</section>
-
-<section
-id="listPage"
-class="page">
-
-<div class="section-head">
-
-<h2>
-همه ژورنال‌ها
-</h2>
-
-<button
-id="newEntryBtn"
-class="soft-btn">
-+
-</button>
-
-</div>
-
-<div
-id="journalList"
-class="journal-list">
-</div>
-
-</section>
-
-<section
-id="settingsPage"
-class="page">
-
-<div class="settings-grid">
-
-<div class="card glass">
-
-<h3>
-ظاهر
-</h3>
-
-<select id="themeSelect">
-
-<option value="aurora">
-Aurora
-</option>
-
-<option value="midnight">
-Midnight
-</option>
-
-<option value="candy">
-Candy
-</option>
-
-</select>
-
-</div>
-
-<div class="card glass">
-
-<h3>
-پشتیبان گیری
-</h3>
-
-<button
-id="exportBtn"
-class="soft-btn">
-خروجی JSON
-</button>
-
-<input
-type="file"
-id="importInput">
-
-</div>
-
-<div class="card glass">
-
-<h3>
-نگهداری
-</h3>
-
-<button
-id="resetBtn"
-class="danger-btn">
-حذف همه داده‌ها
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section
-id="readerPage"
-class="page">
-
-<div class="reader-header">
-
-<button
-id="readerBackBtn"
-class="icon-btn">
-←
-</button>
-
-<button
-id="readerDeleteBtn"
-class="icon-btn">
-🗑
-</button>
-
-</div>
-
-<article
-id="readerContent"
-class="reader glass">
-</article>
-
-</section>
-
-</main>
-
-<nav class="tabbar glass">
-
-<button
-class="tab active"
-data-page="home">
-خانه
-</button>
-
-<button
-class="tab"
-data-page="list">
-ژورنال‌ها
-</button>
-
-<button
-class="tab"
-data-page="settings">
-تنظیمات
-</button>
-
-</nav>
-
-</div>
+<!-- JOURNAL EDITOR -->
 
 <dialog id="editorModal">
 
-<div class="editor glass">
+  <div class="editor glass">
 
-<div class="editor-head">
+    <div class="editor-head">
 
-<h2 id="editorTitle">
-ژورنال
-</h2>
+      <div>
+        <h3 id="editorTitle">
+          ژورنال
+        </h3>
 
-<button
-id="closeEditorBtn"
-class="icon-btn">
-✕
-</button>
+        <span id="editorDate">
+        </span>
+      </div>
 
-</div>
+      <button
+        class="icon-btn"
+        id="closeEditorBtn">
+        ✕
+      </button>
 
-<input
-id="entryTitle"
-class="text-input"
-placeholder="عنوان">
+    </div>
 
-<textarea
-id="entryBody"
-class="text-area"
-placeholder="امروز چه گذشت؟">
-</textarea>
+    <div class="editor-body">
 
-<input
-type="file"
-id="mediaInput"
-multiple
-accept="image/*,video/*">
+      <input
+        id="entryTitle"
+        type="text"
+        maxlength="120"
+        placeholder="عنوان">
 
-<div
-id="mediaPreview"
-class="media-preview">
-</div>
+      <textarea
+        id="entryBody"
+        rows="12"
+        placeholder="شروع به نوشتن کن...">
+      </textarea>
 
-<button
-id="saveEntryBtn"
-class="primary-btn full">
-ذخیره
-</button>
+      <div class="media-upload">
 
-</div>
+        <label class="upload-btn">
+
+          افزودن عکس یا ویدیو
+
+          <input
+            id="mediaInput"
+            type="file"
+            multiple
+            accept="image/*,video/*">
+
+        </label>
+
+      </div>
+
+      <div
+        class="media-grid"
+        id="mediaGrid">
+      </div>
+
+    </div>
+
+    <div class="editor-footer">
+
+      <button
+        class="primary-btn"
+        id="saveEntryBtn">
+
+        ذخیره ژورنال
+
+      </button>
+
+    </div>
+
+  </div>
+
+</dialog>
+
+<!-- CONFIRM -->
+
+<dialog id="confirmModal">
+
+  <div class="confirm-box glass">
+
+    <h3 id="confirmTitle">
+      تایید
+    </h3>
+
+    <p id="confirmText">
+      مطمئن هستی؟
+    </p>
+
+    <div class="confirm-actions">
+
+      <button
+        id="confirmCancelBtn"
+        class="soft-btn">
+
+        انصراف
+
+      </button>
+
+      <button
+        id="confirmOkBtn"
+        class="danger-btn">
+
+        ادامه
+
+      </button>
+
+    </div>
+
+  </div>
 
 </dialog>
 

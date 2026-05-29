@@ -1,400 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
 
-<title>Journara</title>
+  <title>Journara Pro</title>
 
-<meta name="theme-color" content="#0e1324">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="stylesheet" href="./styles.css">
-
-<link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
+  <div class="app" id="app">
 
-<div class="app-shell" id="appShell">
-
-  <!-- BACKGROUND -->
-  <div class="bg-layer">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
-
-  <!-- HEADER -->
-  <header class="topbar glass">
-
-    <div class="brand-side">
-      <div class="brand-logo" id="brandLogo"></div>
-    </div>
-
-    <div class="brand-center">
-      <span class="eyebrow">ژورنال شخصی</span>
-      <h1>Journara</h1>
-    </div>
-
-    <div class="brand-actions">
-      <button
-        class="icon-btn"
-        id="themeToggleBtn"
-        aria-label="تغییر تم">
-        ☾
-      </button>
-    </div>
-
-  </header>
-
-  <!-- MAIN -->
-  <main class="main-layout">
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="brand">Journara</div>
+      <button id="newBtn" class="btn primary">+ جدید</button>
+    </header>
 
     <!-- HOME -->
-    <section class="page active" id="page-home">
-
-      <div class="hero glass">
-
-        <div class="hero-date" id="heroDate">
-          <div class="weekday" id="weekdayLabel">
-            شنبه
-          </div>
-
-          <div class="day-number" id="dayNumber">
-            01
-          </div>
-
-          <div class="month-label" id="monthLabel">
-            فروردین
-          </div>
+    <main class="screen active" id="homeScreen">
+      <section class="hero card">
+        <div class="date" id="todayDate"></div>
+        <div class="mood">
+          <span id="moodEmoji">🙂</span>
+          <input id="mood" type="range" min="0" max="6" value="3"/>
         </div>
+      </section>
 
-        <button
-          class="primary-btn"
-          id="openTodayBtn">
-          ژورنال امروز
-        </button>
-
-      </div>
-
-      <!-- MOOD -->
-      <div class="card glass">
-
-        <div class="card-head">
-          <div>
-            <h3>مود امروز</h3>
-            <span>حس و حال خودت رو ثبت کن</span>
-          </div>
-
-          <div class="mood-emoji" id="moodEmoji">
-            🙂
-          </div>
-        </div>
-
-        <input
-          type="range"
-          min="0"
-          max="6"
-          value="3"
-          id="moodSlider">
-
-        <div
-          class="mood-label"
-          id="moodLabel">
-          خوب و متعادل
-        </div>
-
-      </div>
-
-      <!-- TODAY SUMMARY -->
-      <div
-        class="card glass hidden"
-        id="todaySummary">
-      </div>
-
-    </section>
-
-    <!-- LIST -->
-    <section class="page" id="page-list">
-
-      <div class="page-head">
-
-        <div>
-          <h2>همه ژورنال‌ها</h2>
-          <p>مرور نوشته‌ها و خاطرات</p>
-        </div>
-
-        <button
-          class="soft-btn"
-          id="newEntryBtn">
-          +
-        </button>
-
-      </div>
-
-      <div
-        class="journal-list"
-        id="journalList">
-      </div>
-
-    </section>
+      <section class="list" id="list"></section>
+    </main>
 
     <!-- READER -->
-    <section class="page" id="page-reader">
+    <main class="screen" id="readerScreen">
+      <button class="back" id="backBtn">←</button>
+      <article id="reader"></article>
+    </main>
 
-      <div class="reader-header glass">
-
-        <button
-          class="icon-btn"
-          id="readerBackBtn">
-          ←
-        </button>
-
-        <div
-          class="reader-meta"
-          id="readerMeta">
-        </div>
-
-        <button
-          class="icon-btn"
-          id="readerMenuBtn">
-          ⋯
-        </button>
-
+    <!-- MODAL -->
+    <div class="modal hidden" id="modal">
+      <div class="modalBox">
+        <input id="title" placeholder="عنوان..." />
+        <textarea id="body" placeholder="بنویس..."></textarea>
+        <button id="saveBtn" class="btn primary">ذخیره</button>
       </div>
-
-      <article
-        class="reader-card glass"
-        id="readerCard">
-      </article>
-
-    </section>
-
-    <!-- SETTINGS -->
-    <section class="page" id="page-settings">
-
-      <div class="settings-grid">
-
-        <div class="setting-card glass">
-
-          <h3>ظاهر</h3>
-
-          <label class="field">
-            <span>تم برنامه</span>
-
-            <select id="themeSelect">
-              <option value="bubbles">حبابی</option>
-              <option value="aurora">اورورا</option>
-              <option value="midnight">نئونی</option>
-              <option value="minimal">مینیمال</option>
-            </select>
-          </label>
-
-        </div>
-
-        <div class="setting-card glass">
-
-          <h3>پشتیبان‌گیری</h3>
-
-          <button
-            class="soft-btn"
-            id="exportZipBtn">
-            خروجی ZIP
-          </button>
-
-          <label class="upload-btn">
-
-            بازیابی ZIP
-
-            <input
-              type="file"
-              id="importZipInput"
-              accept=".zip">
-
-          </label>
-
-          <button
-            class="soft-btn"
-            id="exportPdfBtn">
-            خروجی PDF
-          </button>
-
-        </div>
-
-        <div class="setting-card glass">
-
-          <h3>نگهداری</h3>
-
-          <button
-            class="danger-btn"
-            id="resetBtn">
-            حذف همه داده‌ها
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- BOTTOM NAV -->
-
-  <nav class="bottom-nav glass">
-
-    <button
-      class="nav-btn"
-      data-page="list">
-
-      <span>📚</span>
-      <small>آرشیو</small>
-
-    </button>
-
-    <button
-      class="nav-btn active"
-      data-page="home">
-
-      <span>🏠</span>
-      <small>خانه</small>
-
-    </button>
-
-    <button
-      class="nav-btn"
-      data-page="settings">
-
-      <span>⚙️</span>
-      <small>تنظیمات</small>
-
-    </button>
-
-  </nav>
-
-</div>
-
-<!-- JOURNAL EDITOR -->
-
-<dialog id="editorModal">
-
-  <div class="editor glass">
-
-    <div class="editor-head">
-
-      <div>
-        <h3 id="editorTitle">
-          ژورنال
-        </h3>
-
-        <span id="editorDate">
-        </span>
-      </div>
-
-      <button
-        class="icon-btn"
-        id="closeEditorBtn">
-        ✕
-      </button>
-
-    </div>
-
-    <div class="editor-body">
-
-      <input
-        id="entryTitle"
-        type="text"
-        maxlength="120"
-        placeholder="عنوان">
-
-      <textarea
-        id="entryBody"
-        rows="12"
-        placeholder="شروع به نوشتن کن...">
-      </textarea>
-
-      <div class="media-upload">
-
-        <label class="upload-btn">
-
-          افزودن عکس یا ویدیو
-
-          <input
-            id="mediaInput"
-            type="file"
-            multiple
-            accept="image/*,video/*">
-
-        </label>
-
-      </div>
-
-      <div
-        class="media-grid"
-        id="mediaGrid">
-      </div>
-
-    </div>
-
-    <div class="editor-footer">
-
-      <button
-        class="primary-btn"
-        id="saveEntryBtn">
-
-        ذخیره ژورنال
-
-      </button>
-
     </div>
 
   </div>
 
-</dialog>
-
-<!-- CONFIRM -->
-
-<dialog id="confirmModal">
-
-  <div class="confirm-box glass">
-
-    <h3 id="confirmTitle">
-      تایید
-    </h3>
-
-    <p id="confirmText">
-      مطمئن هستی؟
-    </p>
-
-    <div class="confirm-actions">
-
-      <button
-        id="confirmCancelBtn"
-        class="soft-btn">
-
-        انصراف
-
-      </button>
-
-      <button
-        id="confirmOkBtn"
-        class="danger-btn">
-
-        ادامه
-
-      </button>
-
-    </div>
-
-  </div>
-
-</dialog>
-
-<script src="./app.js"></script>
-
+  <script src="./app.js"></script>
 </body>
 </html>

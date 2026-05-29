@@ -1,0 +1,45 @@
+.desktop-layout{
+
+  display:grid;
+
+  grid-template-columns:
+    380px
+    1fr;
+
+  gap:20px;
+
+  height:100%;
+  padding:20px;
+}
+
+.journal-sidebar{
+
+  overflow:auto;
+
+  border-radius:32px;
+}
+
+.reader-pane{
+
+  overflow:auto;
+
+  border-radius:32px;
+
+  padding:28px;
+}
+
+.journal-card{
+
+  transition:
+    transform .45s var(--transition),
+    background .3s ease;
+
+}
+
+.journal-card:hover{
+
+  transform:
+    translateY(-4px)
+    scale(1.01);
+
+}
